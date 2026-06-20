@@ -1,0 +1,23 @@
+<header class="app-header">
+  <div class="brand">
+    <span class="brand-icon">🧭</span>
+    <span class="brand-name">Career Roadmap</span>
+  </div>
+  <nav class="app-nav">
+    @for (item of navItems; track item.path) {
+      <a
+        class="nav-link"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <span class="nav-icon">{{ item.icon }}</span>
+        <span class="nav-label">{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</header>
+
+<main class="app-main">
+  <router-outlet />
+</main>

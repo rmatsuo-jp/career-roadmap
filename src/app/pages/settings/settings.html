@@ -1,0 +1,51 @@
+<section class="page">
+  <header class="page-head">
+    <h1>設定</h1>
+  </header>
+
+  @if (message()) {
+    <p class="flash">{{ message() }}</p>
+  }
+
+  <!-- ── 表示テーマ ── -->
+  <div class="card setting-block">
+    <h2>表示テーマ</h2>
+    <div class="row">
+      <span>{{ settings.theme === 'dark' ? 'ダーク' : 'ライト' }}モード</span>
+      <button class="btn" (click)="toggleTheme()" type="button">切り替え</button>
+    </div>
+  </div>
+
+  <!-- ── AIコーチ（Gemini） ── -->
+  <div class="card setting-block">
+    <h2>AIコーチ（Gemini）</h2>
+    <label class="field">
+      <span>APIキー</span>
+      <input type="password" [(ngModel)]="settings.apiKey" placeholder="AIza..." autocomplete="off" />
+    </label>
+    <label class="field">
+      <span>モデル</span>
+      <select [(ngModel)]="settings.model">
+        <option value="gemini-3.5-flash">gemini-3.5-flash</option>
+        <option value="gemini-2.5-flash">gemini-2.5-flash</option>
+        <option value="gemini-2.5-pro">gemini-2.5-pro</option>
+      </select>
+    </label>
+    <p class="muted">APIキーはこの端末のブラウザ（localStorage）にのみ保存されます。</p>
+    <button class="btn btn-primary" (click)="save()" type="button">保存</button>
+  </div>
+
+  <!-- ── データ管理 ── -->
+  <div class="card setting-block">
+    <h2>データ管理</h2>
+    <p class="muted">すべてのデータはこの端末のブラウザに保存されます。バックアップや移行に利用できます。</p>
+    <div class="row wrap">
+      <button class="btn" (click)="exportData()" type="button">📤 エクスポート</button>
+      <label class="btn import-label">
+        📥 インポート
+        <input type="file" accept="application/json" (change)="importData($event)" hidden />
+      </label>
+      <button class="btn danger" (click)="resetSeed()" type="button">↺ 初期内容に戻す</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,144 @@
+/**
+ * @file 資格・成果トラッカー画面のスタイル。
+ */
+.page-head {
+  margin-bottom: 20px;
+}
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.group {
+  margin-bottom: 24px;
+}
+.group-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+}
+
+.goal {
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.goal.done {
+  border-color: var(--color-success);
+}
+.goal-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.goal-title {
+  flex: 1;
+  font-weight: 600;
+}
+.badge.target {
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+.del {
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: 4px;
+}
+.del:hover {
+  color: var(--color-danger);
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.progress-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--color-primary);
+}
+.progress-num {
+  width: 44px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.status-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.status-pill {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+.status-pill.active[data-status="not-started"] {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+.status-pill.active[data-status="in-progress"] {
+  background: var(--color-warning);
+  color: #1f2937;
+  border-color: var(--color-warning);
+}
+.status-pill.active[data-status="done"] {
+  background: var(--color-success);
+  color: #fff;
+  border-color: var(--color-success);
+}
+
+.note-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.add-toggle {
+  width: 100%;
+  justify-content: center;
+  border-style: dashed;
+}
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.add-form h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+.add-row {
+  display: flex;
+  gap: 10px;
+}
+.add-row select,
+.add-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font-family: inherit;
+}
+.add-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

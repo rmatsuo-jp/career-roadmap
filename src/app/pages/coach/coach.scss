@@ -1,0 +1,53 @@
+/**
+ * @file AIコーチ画面のスタイル。
+ */
+.page-head {
+  margin-bottom: 20px;
+}
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.notice {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.generate-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.error {
+  color: var(--color-danger);
+}
+.hint {
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.advice {
+  line-height: 1.7;
+}
+.advice :first-child {
+  margin-top: 0;
+}
+.advice h2 {
+  font-size: 1.1rem;
+  margin-top: 1.2em;
+  color: var(--color-primary-hover);
+}
+.advice ol,
+.advice ul {
+  padding-left: 1.4em;
+}
+.advice li {
+  margin-bottom: 4px;
+}

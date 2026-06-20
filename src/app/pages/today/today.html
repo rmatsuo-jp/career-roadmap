@@ -1,0 +1,57 @@
+<section class="page">
+  <header class="page-head">
+    <h1>今日の日課</h1>
+    <p class="subtitle">{{ todayLabel }}</p>
+  </header>
+
+  <!-- ── サマリー ── -->
+  <div class="summary">
+    <div class="stat card">
+      <span class="stat-value">🔥 {{ stats().currentStreak }}</span>
+      <span class="stat-label">連続達成日数</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-value">{{ stats().todayDone }}/{{ stats().todayTotal }}</span>
+      <span class="stat-label">今日の完了</span>
+    </div>
+    <div class="stat card">
+      <span class="stat-value">{{ stats().last7DaysRate }}%</span>
+      <span class="stat-label">直近7日の達成率</span>
+    </div>
+  </div>
+
+  <!-- ── 当日のタスク ── -->
+  <div class="card task-list">
+    @for (task of tasks(); track task.id) {
+      <button
+        class="task-row"
+        [class.done]="isDone(task.id)"
+        (click)="toggle(task.id)"
+        type="button"
+      >
+        <span class="check">{{ isDone(task.id) ? '✅' : '⬜' }}</span>
+        <span class="task-icon">{{ icon(task.category) }}</span>
+        <span class="task-label">{{ task.label }}</span>
+        @if (task.targetMinutes) {
+          <span class="badge minutes">{{ task.targetMinutes }}分</span>
+        }
+      </button>
+    } @empty {
+      <p class="empty">今日の対象となる日課はありません。</p>
+    }
+  </div>
+
+  <!-- ── 直近7日グリッド ── -->
+  <div class="card week-card">
+    <h2>直近7日</h2>
+    <div class="week-grid">
+      @for (cell of week(); track cell.key) {
+        <div class="day" [class.complete]="cell.complete" [class.is-today]="cell.isToday">
+          <span class="day-weekday">{{ cell.weekday }}</span>
+          <span class="day-dot">{{ cell.complete ? '●' : (cell.done > 0 ? '◐' : '○') }}</span>
+          <span class="day-count">{{ cell.done }}/{{ cell.total }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

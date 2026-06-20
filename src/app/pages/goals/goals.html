@@ -1,0 +1,82 @@
+<section class="page">
+  <header class="page-head">
+    <h1>資格・目標</h1>
+    <p class="subtitle">資格取得・年収目標の進捗を管理します</p>
+  </header>
+
+  @for (group of groups(); track group.type) {
+    <div class="group">
+      <h2 class="group-title">{{ group.icon }} {{ group.label }}</h2>
+      @for (goal of group.goals; track goal.id) {
+        <div class="card goal" [class.done]="goal.status === 'done'">
+          <div class="goal-head">
+            <span class="goal-title">{{ goal.title }}</span>
+            @if (goal.targetDate) {
+              <span class="badge target">目標 {{ goal.targetDate }}</span>
+            }
+            <button class="del" (click)="remove(goal)" type="button" title="削除">✕</button>
+          </div>
+
+          <!-- 進捗スライダー -->
+          <div class="progress-row">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              step="5"
+              [value]="goal.progress"
+              (input)="setProgress(goal, +$any($event.target).value)"
+            />
+            <span class="progress-num">{{ goal.progress }}%</span>
+          </div>
+
+          <!-- ステータス切替 -->
+          <div class="status-row">
+            @for (s of ['not-started', 'in-progress', 'done']; track s) {
+              <button
+                class="status-pill"
+                [class.active]="goal.status === s"
+                [attr.data-status]="s"
+                (click)="setStatus(goal, $any(s))"
+                type="button"
+              >
+                {{ statusLabel($any(s)) }}
+              </button>
+            }
+          </div>
+
+          <input
+            class="note-input"
+            type="text"
+            placeholder="メモ（学習計画・参考書など）"
+            [value]="goal.note ?? ''"
+            (change)="updateNote(goal, $any($event.target).value)"
+          />
+        </div>
+      }
+    </div>
+  }
+
+  <!-- ── 新規追加 ── -->
+  @if (showAdd()) {
+    <div class="card add-form">
+      <h2>目標を追加</h2>
+      <input class="note-input" type="text" placeholder="目標名" [(ngModel)]="newTitle" />
+      <div class="add-row">
+        <select [(ngModel)]="newType">
+          <option value="exam">IT試験</option>
+          <option value="language-cert">語学検定</option>
+          <option value="income">年収</option>
+          <option value="career">キャリア</option>
+        </select>
+        <input type="date" [(ngModel)]="newDate" />
+      </div>
+      <div class="add-actions">
+        <button class="btn" (click)="showAdd.set(false)" type="button">キャンセル</button>
+        <button class="btn btn-primary" (click)="addGoal()" type="button">追加</button>
+      </div>
+    </div>
+  } @else {
+    <button class="btn add-toggle" (click)="showAdd.set(true)" type="button">＋ 目標を追加</button>
+  }
+</section>

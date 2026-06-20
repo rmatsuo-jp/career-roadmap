@@ -1,0 +1,27 @@
+<section class="page">
+  <header class="page-head">
+    <h1>AIコーチ</h1>
+    <p class="subtitle">現状を踏まえた今週のアドバイスを生成します</p>
+  </header>
+
+  @if (!hasApiKey()) {
+    <div class="card notice">
+      <p>AIコーチを使うには Gemini APIキーの設定が必要です。</p>
+      <a class="btn btn-primary" routerLink="/settings">設定へ移動</a>
+    </div>
+  } @else {
+    <button class="btn btn-primary generate-btn" (click)="generate()" [disabled]="loading()" type="button">
+      {{ loading() ? '生成中…' : '今週のアドバイスを生成' }}
+    </button>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    @if (adviceHtml()) {
+      <article class="card advice" [innerHTML]="adviceHtml()"></article>
+    } @else if (!loading()) {
+      <p class="hint">ボタンを押すと、日課の達成状況・直近の目標をもとにアドバイスを作成します。</p>
+    }
+  }
+</section>

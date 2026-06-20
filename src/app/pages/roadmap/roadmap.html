@@ -1,0 +1,45 @@
+<section class="page">
+  <header class="page-head">
+    <h1>ロードマップ</h1>
+    <p class="subtitle">キャリアパスとゴール（2026 → 2075）</p>
+  </header>
+
+  <!-- ── 全体進捗 ── -->
+  <div class="card progress-card">
+    <div class="progress-top">
+      <span>達成率</span>
+      <strong>{{ progress() }}%</strong>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="progress()"></div>
+    </div>
+  </div>
+
+  <!-- ── タイムライン ── -->
+  <ol class="timeline">
+    @for (item of items(); track item.id) {
+      <li class="tl-item" [class.achieved]="item.status === 'achieved'" [class.past]="item.past">
+        <div class="tl-marker" [class.dot-achieved]="item.status === 'achieved'" [class.dot-progress]="item.status === 'in-progress'"></div>
+        <div class="tl-body card">
+          <div class="tl-meta">
+            <span class="tl-date">{{ item.dueDate }}</span>
+            <span class="badge period">{{ item.periodLabel }} ・ {{ item.age }}歳</span>
+            <span class="badge kind" [class.kind-self]="item.kind === 'self'">
+              {{ item.kind === 'self' ? '自分で達成' : '結果として達成' }}
+            </span>
+          </div>
+          <div class="tl-title">
+            <span class="cat-icon">{{ icon(item.category) }}</span>
+            <span>{{ item.title }}</span>
+          </div>
+          <div class="tl-footer">
+            <span class="remaining">{{ remaining(item) }}</span>
+            <button class="btn status-btn" [attr.data-status]="item.status" (click)="cycleStatus(item)" type="button">
+              {{ statusLabel(item.status) }}
+            </button>
+          </div>
+        </div>
+      </li>
+    }
+  </ol>
+</section>
