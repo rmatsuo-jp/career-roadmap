@@ -38,3 +38,14 @@ npm run deploy     # GitHub Pages へデプロイ
 
 初期データは PDF「キャリアパスとゴール v8」から生成しています（`src/app/utils/seed.util.ts`）。
 内容を編集後に元へ戻したいときは、設定画面の「初期内容に戻す」から再投入できます（チェックイン履歴は保持）。
+
+## ライセンス・免責
+
+本アプリは **MIT License** のもとで無償提供されます。利用にあたっては、以下の規約類をご確認ください。
+
+- [免責事項（DISCLAIMER）](docs/DISCLAIMER.md)
+- [利用規約（TERMS）](docs/TERMS.md)
+- [プライバシーポリシー（PRIVACY）](docs/PRIVACY.md)
+- [ライセンス（LICENSE）](docs/LICENSE.md)
+
+本アプリは現状有姿で提供され、利用に起因する損害について、法令上許容される範囲で開発者は責任を負いません。
