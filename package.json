@@ -1,13 +1,17 @@
 {
   "name": "career-roadmap",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "gen:version": "node scripts/generate-version.mjs",
+    "prestart": "node scripts/generate-version.mjs",
     "start": "ng serve",
+    "prebuild": "node scripts/generate-version.mjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "predeploy": "node scripts/generate-version.mjs",
     "deploy": "ng build --base-href \"/career-roadmap/\" && npx angular-cli-ghpages --dir=dist/career-roadmap/browser"
   },
   "private": true,

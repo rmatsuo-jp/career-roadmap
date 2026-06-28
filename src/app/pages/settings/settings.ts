@@ -5,6 +5,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppSettings, StorageService } from '../../services/storage.service';
+import { APP_VERSION, RELEASE_DATE } from '../../../version';
 
 @Component({
   selector: 'app-settings',
@@ -17,6 +18,10 @@ export class Settings {
 
   protected settings: AppSettings = this.store.getSettings();
   protected readonly message = signal('');
+
+  // ── バージョン情報（version.ts はビルド時に自動生成） ──
+  protected readonly version = APP_VERSION;
+  protected readonly releaseDate = RELEASE_DATE;
 
   protected save(): void {
     this.store.saveSettings(this.settings);
