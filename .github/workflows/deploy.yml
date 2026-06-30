@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # semantic-release は全コミット履歴とタグを参照して次バージョンを判定するため全取得する
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # コミット種別から次バージョンを判定 → package.json / src/version.ts / CHANGELOG.md を更新し
+      # タグ・GitHub Release を作成して main へ push（[skip ci] 付きで再帰起動しない）
+      - name: Release (bump version, tag, changelog)
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: npm run build -- --base-href=/career-roadmap/
+
+      - name: SPA fallback (404.html)
+        run: cp dist/career-roadmap/browser/index.html dist/career-roadmap/browser/404.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/career-roadmap/browser
