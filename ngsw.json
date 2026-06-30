@@ -1,0 +1,79 @@
+{
+  "configVersion": 1,
+  "timestamp": 1782777803657,
+  "index": "/career-roadmap/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/career-roadmap/chunk-3g_j4XGi.js",
+        "/career-roadmap/chunk-CW5TDRnF.js",
+        "/career-roadmap/chunk-CiBeHVWE.js",
+        "/career-roadmap/chunk-Dl-R3ueu.js",
+        "/career-roadmap/chunk-MH4ZGODU.js",
+        "/career-roadmap/chunk-WB6kQ9fN.js",
+        "/career-roadmap/favicon.ico",
+        "/career-roadmap/index.html",
+        "/career-roadmap/main-N3KCMQ6G.js",
+        "/career-roadmap/manifest.webmanifest",
+        "/career-roadmap/styles-46OUK744.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/career-roadmap/favicon.svg",
+        "/career-roadmap/icons/icon-192.svg",
+        "/career-roadmap/icons/icon-512.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/career-roadmap/chunk-3g_j4XGi.js": "6277b9f7b955f99c80eaa5bb39a5108cdfb12bc2",
+    "/career-roadmap/chunk-CW5TDRnF.js": "ca29a17510c9eff54d2bb7722c9c221ef5f708c1",
+    "/career-roadmap/chunk-CiBeHVWE.js": "d06a5389231e8a32d0366c20d7774645e0ff5450",
+    "/career-roadmap/chunk-Dl-R3ueu.js": "2ba89e3c4d36e18ff75de2614acb65d34c49efe8",
+    "/career-roadmap/chunk-MH4ZGODU.js": "8df146cc1d44ecac461bbb7cb0e155e2d8f375a0",
+    "/career-roadmap/chunk-WB6kQ9fN.js": "077969092ce7f14e934a9a68884353c5c5689c44",
+    "/career-roadmap/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/career-roadmap/favicon.svg": "31fdbd1be3aa3fb1916bf2bb5e4e2a49ab1d10bf",
+    "/career-roadmap/icons/icon-192.svg": "6d6799b1974f269537fbbfe39d2d90c765f12601",
+    "/career-roadmap/icons/icon-512.svg": "074b5ed0dd6c016a8e00239b0fe4a827bde1f856",
+    "/career-roadmap/index.html": "bfc65ee4d3632c809cf50678bbe0022c6ffde22c",
+    "/career-roadmap/main-N3KCMQ6G.js": "626f8507c100f6b4c6418a5dc28316b008cc60a4",
+    "/career-roadmap/manifest.webmanifest": "4f62d94e509aca9d6796851da1992c90f1c9eff2",
+    "/career-roadmap/styles-46OUK744.css": "7767a0155048290c749a2b7bccee0732fb4c7131"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
